@@ -1,7 +1,5 @@
 package org.example.Appliction;
 
-import org.assertj.core.api.ByteArrayAssert;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -36,6 +34,19 @@ class AppControllerTest {
         TestUtil.clearSetOutToByteArray(output);
 
         assertThat(rs).isEqualTo("안녕");
+    }
+
+    // 앱 테스트 시작
+    @Test
+    @DisplayName("프로그램 시작시 타이틀 출력 그리고 종료")
+    public void t3() {
+        String rs = AppTestRunner.run("");
+
+        assertThat(rs)
+                .contains("== 명언 앱 ==")
+                .contains("명령) ")
+                .contains("프로그램이 종료되었습니다.")
+                .doesNotContain("올바르지 않은 명령입니다.");
     }
 
 
